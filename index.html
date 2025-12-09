@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Our Place Brætspilscafé - Halloween Event, Lykkehjul, Spil og Film">
+    <title>Halloween hos Our Place – Brætspilscafé i Roskilde</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Creepster&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- CTA-knapper -->
+<header class="container text-center" style="padding-top: 150px;">
+    <div class="d-flex justify-content-center" style="gap: 380px;">
+        <a href="http://grp2.nator.dk/" target="_blank" class="btn btn-custom btn-lg">Forside</a>
+        <a href="https://www.ourplacebraetspilscafe.dk/kontakt/" target="_blank" class="btn btn-custom btn-lg">Kontakt</a>
+    </div>
+</header>
+
+<main class="container my-5 content-wrapper">
+
+    <!-- Intro Sektion -->
+    <section class="text-center mb-5 mw-800 mx-auto" aria-labelledby="intro-header">
+        <h1 id="intro-header" class="display-3 mb-4">HALLOWEEN HOS OUR PLACE</h1>
+        <p class="lead text-black font-agbalumo">
+            I hele oktober forvandler vi caféen til et (u)hyggeligt<br>
+            Halloween-univers fyldt med pynt, temaspil,<br>
+            specialmenu og små overraskelser. Kom forbi, prøv<br>
+            vores Halloween-spil og mærk stemningen!
+        </p>
+        <h2 class="display-1 mt-5 creepster-font" style="color: #A31414;">HVIS DU TØR</h2>
+    </section>
+
+    <!-- Åbningstider -->
+    <section id="opening-hours" class="container mb-5" aria-labelledby="hours-header">
+        <h2 id="hours-header" class="section-title text-center w-100 mb-5">ÅBNINGSTIDER FOR HELE OKTOBER</h2>
+
+        <div class="d-flex flex-column flex-md-row justify-content-center align-items-stretch gap-md-5 gap-3">
+            <div class="text-center pb-2">
+                <img src="Images/Head_top.png" alt="Græskarhoved" id="head-top" class="img-fluid">
+            </div>
+            <div>
+                <ul class="list-unstyled opening-list text-black creepster-font mb-0">
+                    <li><span class="day">MANDAG</span> <span class="time">17:00 – 21:00</span></li>
+                    <li><span class="day">TIRSDAG</span> <span class="time">17:00 – 21:00</span></li>
+                    <li><span class="day">ONSDAG</span> <span class="time">17:00 – 21:00</span></li>
+                    <li><span class="day">TORSDAG</span> <span class="time">17:00 – 22:00</span></li>
+                    <li><span class="day">FREDAG</span> <span class="time">15:00 – 23:00</span></li>
+                    <li><span class="day">LØRDAG</span> <span class="time">13:00 – 23:00</span></li>
+                    <li><span class="day">SØNDAG</span> <span class="time">13:00 – 22:00</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="spacer" aria-hidden="true"></div>
+
+    <!-- Lykkehjul Sektion -->
+    <section id="lucky-wheel" class="mx-auto mw-800 mb-5" aria-labelledby="wheel-header">
+        <h2 id="wheel-header" class="section-title mb-4 text-center" style="white-space: nowrap;">
+            DREJ LYKKEHJULET
+        </h2>
+
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4 mb-md-0">
+                <p class="fs-4 text-black lh-lg font-agbalumo">
+                    Drej hjulet og se,<br>
+                    hvad skæbnen<br>
+                    bringer... Held, en<br>
+                    overraskelse eller<br>
+                    ingenting? Kun de<br>
+                    modige tør prøve!
+                </p>
+            </div>
+            <div class="col-md-6 text-center position-relative wheel-wrapper">
+                <div class="wheel-container mx-auto">
+                    <div class="clapper"></div>
+                    <div class="the_wheel" id="wheel">
+                        <div class="wheel-text" style="--i:0;">Ingen gevinst</div>
+                        <div class="wheel-text" style="--i:1;">Klistermærke</div>
+                        <div class="wheel-text" style="--i:2;">Ingen gevinst</div>
+                        <div class="wheel-text" style="--i:3;">10% rabat</div>
+                        <div class="wheel-text" style="--i:4;">Ingen gevinst</div>
+                        <div class="wheel-text" style="--i:5;">Nøglering</div>
+                        <div class="wheel-text" style="--i:6;">Slikpose</div>
+                        <div class="wheel-text" style="--i:7;">10% rabat</div>
+                    </div>
+                    <button id="spinBtn" class="spin-overlay" aria-label="Spin hjulet"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="spacer" aria-hidden="true"></div>
+
+    <!-- Halloween Bog Sektion -->
+    <section id="halloween-book" class="mb-5 text-center" aria-labelledby="book-header">
+        <h2 id="book-header" class="section-title mb-4">HALLOWEEN SPIL</h2>
+        <p class="fs-4 text-black mb-2 font-agbalumo">
+            Spil med uhygge! Prøv vores Halloween-spil fyldt<br>
+            med spænding, skrig og grin.
+        </p>
+        <p class="fs-5 mb-5 text-black font-agbalumo">
+            Find flere detaljer herunder...<br>
+            på eget ansvar
+        </p>
+
+        <div class="book-container mw-800 mx-auto">
+            <div id="interactive-book" class="book-frame" role="button" aria-label="Interaktiv bog. Klik for at bladre.">
+                <div class="book-state cover-state active">
+                    <img src="Images/Forside.png" alt="Bog Forside">
+                </div>
+                <div class="book-state spread-state">
+                    <img src="Images/Side_1.png" class="page-left" alt="Side 1">
+                    <img src="Images/Side_2.png" class="page-right" alt="Side 2">
+                </div>
+                <div class="book-state spread-state">
+                    <img src="Images/Side_3.png" class="page-left" alt="Side 3">
+                    <img src="Images/Side_4.png" class="page-right" alt="Side 4">
+                </div>
+                <div class="book-state cover-state">
+                    <img src="Images/Bagside.png" alt="Bog Bagside">
+                </div>
+            </div>
+            <p class="mt-2 small-text text-black">(Klik på bogen for at bladre)</p>
+        </div>
+    </section>
+
+    <div class="spacer" aria-hidden="true"></div>
+
+    <!-- Menukort Sektion -->
+    <section id="menu-card" class="text-center mb-5" aria-labelledby="menu-header">
+        <h2 id="menu-header" class="section-title mb-4">HALLOWEEN-MENU</h2>
+        <p class="fs-4 text-black mb-4 font-agbalumo">
+            Vi har lavet et Halloween-menukort med lækre, kreative<br>
+            og uhyggelige retter og drinks.
+        </p>
+        <div class="mx-auto" style="max-width: 650px;">
+            <img src="Images/Menukort.png" alt="Menukort" class="img-fluid shadow-lg rounded">
+        </div>
+    </section>
+
+    <div class="spacer" aria-hidden="true"></div>
+
+    <!-- Café før/efter slider -->
+    <section id="halloween-cafe" class="mb-5 text-center" aria-labelledby="cafe-header">
+        <h2 id="cafe-header" class="section-title mb-4">HALLOWEEN I CAFÉEN</h2>
+        <p class="fs-4 text-black mb-4 font-agbalumo">
+            Caféen er forvandlet til et hjemsøgt univers med<br>
+            græskar, spindelvæv og skumle overraskelser.
+        </p>
+        <div class="mx-auto" style="max-width: 650px;">
+            <img-comparison-slider class="rounded shadow">
+                <img slot="first" src="Images/Venstre_billede.png" alt="Før Halloween" width="100%" />
+                <img slot="second" src="Images/Hoejre_billede.png" alt="Efter Halloween" width="100%" />
+            </img-comparison-slider>
+        </div>
+    </section>
+
+    <div class="spacer" aria-hidden="true"></div>
+
+    <!-- Kostume Konkurrence karrusel -->
+    <section id="costume-contest" class="mb-5 text-center" aria-labelledby="costume-header">
+        <h2 id="costume-header" class="section-title mb-4">KOSTUMEKONKURRENCE</h2>
+        <p class="fs-4 text-black mb-5 font-agbalumo">
+            Kom i dit mest skræmmende, sjove eller kreative<br>
+            kostume og vind præmier – alle kan være med!
+        </p>
+
+        <div class="carousel position-relative mx-auto" style="max-width: 800px;">
+            <div class="carousel-track-container">
+                <ul class="carousel-track">
+                    <li class="carousel-slide current-slide"><img src="Images/Billede_1.png" alt="Deltager 1"></li>
+                    <li class="carousel-slide"><img src="Images/Billede_2.png" alt="Deltager 2"></li>
+                    <li class="carousel-slide"><img src="Images/Billede_3.png" alt="Deltager 3"></li>
+                    <li class="carousel-slide"><img src="Images/Billede_4.png" alt="Deltager 4"></li>
+                    <li class="carousel-slide"><img src="Images/Billede_5.png" alt="Deltager 5"></li>
+                    <li class="carousel-slide"><img src="Images/Billede_6.png" alt="Deltager 6"></li>
+                </ul>
+            </div>
+
+            <button class="carousel-button carousel-button--left" aria-label="Forrige billede">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+
+            <button class="carousel-button carousel-button--right" aria-label="Næste billede">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+
+            <div class="carousel-nav">
+                <button class="carousel-indicator current-slide" aria-label="Slide 1"></button>
+                <button class="carousel-indicator" aria-label="Slide 2"></button>
+                <button class="carousel-indicator" aria-label="Slide 3"></button>
+                <button class="carousel-indicator" aria-label="Slide 4"></button>
+                <button class="carousel-indicator" aria-label="Slide 5"></button>
+                <button class="carousel-indicator" aria-label="Slide 6"></button>
+            </div>
+        </div>
+    </section>
+
+    <div class="spacer" aria-hidden="true"></div>
+
+    <!-- Spooky Movie Nights swiper -->
+    <section id="movie-nights" class="mb-5 text-center" aria-labelledby="movie-header">
+        <h2 id="movie-header" class="section-title mb-4">SPOOKY MOVIE NIGHTS</h2>
+        <p class="fs-4 text-black mb-5 font-agbalumo">
+            Mørket falder, og de mest uhyggelige film vises.<br>
+            kun for 18+.
+        </p>
+        <div class="swiper movieSwiper py-5">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="Images/Film01.png" alt="Film"></div>
+                <div class="swiper-slide"><img src="Images/Film02.png" alt="Film"></div>
+                <div class="swiper-slide"><img src="Images/Film03.png" alt="Film"></div>
+                <div class="swiper-slide"><img src="Images/Film04.png" alt="Film"></div>
+                <div class="swiper-slide"><img src="Images/Film05.png" alt="Film"></div>
+                <div class="swiper-slide"><img src="Images/Film06.png" alt="Film"></div>
+                <div class="swiper-slide"><img src="Images/Film07.png" alt="Film"></div>
+                <div class="swiper-slide"><img src="Images/Film08.png" alt="Film"></div>
+                <div class="swiper-slide"><img src="Images/Film09.png" alt="Film"></div>
+                <div class="swiper-slide"><img src="Images/Film10.png" alt="Film"></div>
+                <div class="swiper-slide"><img src="Images/Film11.png" alt="Film"></div>
+                <div class="swiper-slide"><img src="Images/Film12.png" alt="Film"></div>
+                <div class="swiper-slide"><img src="Images/Film13.png" alt="Film"></div>
+                <div class="swiper-slide"><img src="Images/Film14.png" alt="Film"></div>
+                <div class="swiper-slide"><img src="Images/Film15.png" alt="Film"></div>
+                <div class="swiper-slide"><img src="Images/Film16.png" alt="Film"></div>
+                <div class="swiper-slide"><img src="Images/Film17.png" alt="Film"></div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="container-fluid py-5 footer-custom">
+    <div class="container footer-wrapper">
+        <div class="row align-items-start justify-content-between">
+
+            <!-- Åbningstider -->
+            <div class="col-md-5 mb-4">
+                <h3 class="footer-heading mb-3">Åbningstider i oktober</h3>
+                <ul class="list-unstyled footer-list">
+                    <li><span class="footer-day">Mandag</span><span class="footer-time">17:00–21:00</span></li>
+                    <li><span class="footer-day">Tirsdag</span><span class="footer-time">17:00–21:00</span></li>
+                    <li><span class="footer-day">Onsdag</span><span class="footer-time">17:00–21:00</span></li>
+                    <li><span class="footer-day">Torsdag</span><span class="footer-time">17:00–22:00</span></li>
+                    <li><span class="footer-day">Fredag</span><span class="footer-time">15:00–23:00</span></li>
+                    <li><span class="footer-day">Lørdag</span><span class="footer-time">13:00–23:00</span></li>
+                    <li><span class="footer-day">Søndag</span><span class="footer-time">13:00–22:00</span></li>
+                </ul>
+            </div>
+
+            <!-- Kontakt -->
+            <div class="col-md-5 mb-4 footer-contact-col">
+                <h3 class="footer-heading mb-3">Kontakt</h3>
+                <div class="contact-info">
+                    <div class="d-flex align-items-center mb-2">
+                        <img src="Images/Location.png" alt="Adresse" class="contact-icon">
+                        <a href="https://www.google.com/maps/place/Munkebro+1,+4000+Roskilde/@55.6426679,12.0811018,17z/data=!3m1!4b1!4m6!3m5!1s0x46525fd018568897:0xa72fd82e8f462875!8m2!3d55.6426649!4d12.0836767!16s%2Fg%2F11xt42_h85?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D"
+                           target="_blank" rel="noopener noreferrer" class="footer-link">
+                            Munkebro 1, 4000 Roskilde
+                        </a>
+                    </div>
+                    <div class="d-flex align-items-center mb-2">
+                        <img src="Images/Email.png" alt="E-mail" class="contact-icon">
+                        <a href="mailto:kontakt@ourplacebraetspilscafe.dk" class="footer-link">
+                            kontakt@ourplacebraetspilscafe.dk
+                        </a>
+                    </div>
+                    <div class="d-flex align-items-center mb-2">
+                        <img src="Images/Telefon.png" alt="Telefon" class="contact-icon">
+                        <a href="tel:+4525382845" class="footer-link">
+                            25 38 28 45
+                        </a>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="Images/Web.png" alt="Hjemmeside" class="contact-icon">
+                        <a href="http://grp2.nator.dk/"
+                           target="_blank" rel="noopener noreferrer" class="footer-link">
+                            Hjemmeside
+                        </a>
+                    </div>
+
+                    <div class="d-flex gap-3 mt-3 footer-social">
+                        <a href="https://www.facebook.com/p/Our-Place-Br%C3%A6tspilscaf%C3%A9-61553844893402/"
+                           target="_blank" rel="noopener noreferrer">
+                            <img src="Images/Facebook.png" alt="Facebook" width="40">
+                        </a>
+                        <a href="https://www.instagram.com/ourplacebraetspilscafe/?hl=en"
+                           target="_blank" rel="noopener noreferrer">
+                            <img src="Images/Instagram.png" alt="Instagram" width="40">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<!-- Gevinst pop-up vindue (Modal) -->
+<div id="prizeModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Resultat af lykkehjulet">
+    <div class="modal-content">
+        <span id="closeModal" class="close-x">&times;</span>
+        <img id="prizeImage" src="" alt="Gevinst" class="prize-img">
+        <div id="countdown" aria-live="polite"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

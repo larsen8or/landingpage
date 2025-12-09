@@ -1,0 +1,735 @@
+/* Basis farver og fonte */
+:root {
+    --primary-color: #FD9208;
+    --hover-color: #9F5D07;
+    --text-color: #000000;
+    --footer-bg: #AA6C39;
+    --font-heading: 'Creepster', display;
+    --font-body: 'Agbalumo', display;
+    --contest-green: #3E5F33;
+}
+
+/* Body – baggrund og grundlayout */
+body {
+    font-family: var(--font-body);
+    color: var(--text-color);
+    line-height: 1.4;
+    background: url('Images/Background.webp') no-repeat center top;
+    background-size: 100% auto;
+    background-attachment: scroll;
+    background-color: #AA6C39;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Max bredder til indhold og footer */
+.mw-800 { max-width: 800px; }
+.content-wrapper { max-width: 850px; }
+.footer-wrapper { max-width: 1350px; }
+
+/* Typografi – overskrifter og Halloween-fonte */
+h1,
+h2,
+h3,
+.section-title,
+.creepster-font,
+.font-creepy {
+    font-family: var(--font-heading);
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Typografi – sort tekst og brødtekstfont */
+.text-black { color: #000000 !important; }
+.font-agbalumo { font-family: var(--font-body); }
+
+/* Typografi – størrelser på hovedoverskrifter */
+h1.display-3 { font-size: 3rem; }
+h2.display-1 { font-size: 4rem; }
+
+/* Typografi – standard sektionstitel */
+.section-title {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Typografi – større overskrifter på mellem/stor skærm */
+@media (min-width: 768px) {
+    h1.display-3 { font-size: 4.5rem; }
+    .section-title {
+        font-size: 3.8rem;
+        text-align: center;
+    }
+}
+
+/* Knapper – generel call-to-action */
+.btn-custom {
+    color: var(--text-color);
+    font-family: var(--font-body);
+    border: 1px solid #000;
+    background-color: var(--primary-color);
+    padding: 13px 34px;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    transition: background 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: var(--hover-color);
+    color: #000;
+    border-color: #000;
+}
+
+/* Åbningstider – græskarhoved */
+#head-top {
+    height: auto;
+    width: 100%;
+    max-width: 280px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Åbningstider – liste med tider */
+.opening-list { width: 100%; }
+
+.opening-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2.4rem;
+    line-height: 1.3;
+    padding-bottom: 2px;
+}
+
+.opening-list span.day { text-align: left; }
+.opening-list span.time {
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* Lykkehjul – wrapper omkring tekst og hjul */
+.wheel-wrapper { padding-left: 0; }
+
+/* Lykkehjul – container til hjul og klik-område */
+.wheel-container {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 70px;
+}
+
+/* Lykkehjul – selve hjulet */
+.the_wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 4px solid #000;
+    background: conic-gradient(
+            #3E5F3F 0deg 45deg,
+            #FD9208 45deg 90deg,
+            #000000 90deg 135deg,
+            #FD9208 135deg 180deg,
+            #000000 180deg 225deg,
+            #FD9208 225deg 270deg,
+            #000000 270deg 315deg,
+            #FD9208 315deg 360deg
+    );
+    transition: transform 15s cubic-bezier(0.1, 0.7, 0.1, 1);
+}
+
+/* Lykkehjul – tekst i felterne */
+.wheel-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #ffffff;
+    font-family: agbalumo;
+    font-size: 16px;
+    text-shadow: 1px 1px 2px #000;
+    transform: translate(-50%, -50%)
+    rotate(calc(var(--i) * 45deg + 22.5deg))
+    translate(85px);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+/* Lykkehjul – pilen i toppen */
+.clapper {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 30px solid #A31414;
+    z-index: 20;
+    transform-origin: top center;
+}
+
+/* Lykkehjul – pilens tik-tak animation */
+.clapper.animating { animation: tick 0.1s infinite; }
+
+@keyframes tick {
+    0%   { transform: translateX(-50%) rotate(0deg); }
+    50%  { transform: translateX(-50%) rotate(-15deg); }
+}
+
+/* Lykkehjul – usynlig klikzone over hjulet */
+.spin-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: transparent;
+    border: none;
+    z-index: 30;
+    cursor: pointer;
+}
+
+/* Lykkehjul – gevinst pop-up (modal) */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Lykkehjul – indhold i pop-up */
+.modal-content {
+    position: relative;
+    max-width: 500px;
+    width: 90%;
+    background: transparent;
+    border: none;
+    text-align: center;
+    padding: 0;
+}
+
+/* Lykkehjul – gevinstbillede i pop-up */
+.prize-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+}
+
+/* Lykkehjul – luk kryds i pop-up */
+.close-x {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 3rem;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #000000;
+    cursor: pointer;
+    line-height: 0.5;
+    z-index: 10;
+    transition: transform 0.2s;
+    opacity: 0.9;
+}
+
+.close-x:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+/* Lykkehjul – nedtællingstekst i pop-up */
+#countdown {
+    position: absolute;
+    bottom: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Agbalumo', display;
+    font-size: 2.8rem;
+    color: #000000;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Lykkehjul – større countdown i cooldown-pop-up */
+.modal-overlay.cooldown-active #countdown {
+    font-size: 4rem;
+    bottom: 42%;
+}
+
+/* Halloween-spil – container til bogen */
+.book-container {
+    padding: 20px 0;
+    perspective: 1000px;
+}
+
+/* Halloween-spil – interaktiv bogramme */
+.book-frame {
+    border: none;
+    background: transparent;
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 3 / 2;
+    margin: 0 auto;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Halloween-spil – klik-animation på bogen */
+.book-frame:active { transform: scale(0.99); }
+
+/* Halloween-spil – bogens tilstande (forside, opslag, bagside) */
+.book-state {
+    display: none;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+}
+
+/* Halloween-spil – aktiv bogtilstand */
+.book-state.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Halloween-spil – fade-in animation ved sideskift */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Halloween-spil – opslag med to sider */
+.spread-state.active {
+    display: flex;
+    border: none;
+}
+
+/* Halloween-spil – venstre og højre side */
+.page-left,
+.page-right {
+    width: 50%;
+    height: 100%;
+    object-fit: fill;
+    display: block;
+}
+
+/* Halloween-spil – forside og bagside */
+.cover-state img {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Kostumekonkurrence – overordnet karrusel */
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: visible;
+    z-index: 10;
+}
+
+/* Kostumekonkurrence – maskering af slides */
+.carousel-track-container {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Kostumekonkurrence – liste med slides */
+.carousel-track {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    height: 100%;
+    transition: transform 0.4s ease-in-out;
+}
+
+/* Kostumekonkurrence – enkelt slide */
+.carousel-slide {
+    min-width: 100%;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Kostumekonkurrence – pileknapper */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    background-color: var(--contest-green);
+    border: 2px solid #000;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    transition: background 0.3s, transform 0.2s;
+}
+
+/* Kostumekonkurrence – hovereffekt på pileknapper */
+.carousel-button:hover {
+    background-color: #2c4224;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Kostumekonkurrence – pilposition på desktop */
+.carousel-button--left { left: -75px; }
+.carousel-button--right { right: -75px; }
+
+/* Kostumekonkurrence – mindre pile på mellem skærme */
+@media (max-width: 850px) {
+    .carousel-button--left { left: -25px; }
+    .carousel-button--right { right: -25px; }
+    .carousel-button { width: 45px; height: 45px; }
+}
+
+/* Kostumekonkurrence – pilenes SVG-ikon */
+.carousel-button svg {
+    stroke: #000000;
+    width: 30px;
+    height: 30px;
+    fill: none;
+}
+
+/* Kostumekonkurrence – priknavigation under karrusel */
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding-top: 20px;
+}
+
+/* Kostumekonkurrence – enkelt prik */
+.carousel-indicator {
+    border: 1px solid #000;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    background: #000000;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Kostumekonkurrence – aktiv prik */
+.carousel-indicator.current-slide {
+    background: var(--primary-color);
+    transform: scale(1.2);
+}
+
+/* Spooky Movie Nights – swiper container */
+.movieSwiper {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+/* Spooky Movie Nights – centrering af slides */
+.movieSwiper .swiper-wrapper {
+    align-items: center;
+}
+
+/* Spooky Movie Nights – størrelser på plakatslides */
+.movieSwiper .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 280px;
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Spooky Movie Nights – styling af plakatbillede */
+.movieSwiper .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+/* Spooky Movie Nights – lidt mindre plakater på tablets */
+@media (max-width: 768px) {
+    .movieSwiper {
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+
+    .movieSwiper .swiper-slide {
+        width: 220px;
+        height: 330px;
+    }
+}
+
+/* Footer – grundlayout og farver */
+.footer-custom {
+    background-color: var(--footer-bg);
+    color: #000;
+    border-top: 2px solid #000;
+}
+
+/* Footer – sektionstitler */
+.footer-heading {
+    font-family: var(--font-body);
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+/* Footer – liste med åbningstider */
+.footer-list {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+.footer-list li {
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+/* Footer – dag og tidspunkt */
+.footer-day {
+    min-width: 95px;
+    font-weight: 700;
+}
+
+.footer-time { font-weight: 400; }
+
+/* Footer – kontaktinfo og links */
+.contact-info {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.contact-icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+}
+
+.footer-link {
+    color: #000;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 2px;
+    font-weight: 700;
+    display: inline-block;
+}
+
+.footer-link:hover {
+    opacity: 0.85;
+    text-decoration: underline;
+}
+
+/* Footer – sociale ikoner */
+.footer-social a img {
+    display: block;
+}
+
+/* Footer – forskydning af kontaktkolonne på desktop */
+.footer-contact-col {
+    transform: translateX(200px);
+}
+
+/* Footer – centrering og nulstilling af forskydning på tablets */
+@media (max-width: 768px) {
+    .footer-custom .row {
+        text-align: center;
+    }
+
+    .footer-list li {
+        justify-content: center;
+    }
+
+    .contact-info .d-flex {
+        justify-content: center;
+    }
+
+    .footer-heading {
+        text-align: center;
+    }
+
+    .footer-contact-col {
+        transform: none;
+    }
+}
+
+/* Mobile tilpasninger – generelle justeringer på små skærme */
+@media (max-width: 576px) {
+
+    /* Mobil – baggrund skal dække hele højden */
+    body {
+        background-size: cover;
+        background-position: center top;
+    }
+
+    /* Mobil – knapper i header stables */
+    header .d-flex {
+        flex-direction: column;
+        gap: 12px !important;
+        align-items: center;
+    }
+
+    /* Mobil – ekstra luft i top af header */
+    header {
+        padding-top: 80px !important;
+    }
+
+    /* Mobil – knapper i header gøres smallere */
+    header .btn-custom {
+        width: 70%;
+        max-width: 220px;
+    }
+
+    /* Mobil – mindre græskarhoved */
+    #head-top {
+        max-width: 180px;
+        margin-bottom: 1rem;
+    }
+
+    /* Mobil – ekstra horisontal padding på sektioner */
+    main.container,
+    .content-wrapper,
+    #opening-hours,
+    #lucky-wheel,
+    #halloween-book,
+    #menu-card,
+    #halloween-cafe,
+    #costume-contest,
+    #movie-nights {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    /* Mobil – afstand mellem sektioner */
+    .spacer {
+        height: 40px;
+    }
+
+    /* Mobil – lidt mindre tekst i åbningstider */
+    .opening-list li {
+        font-size: 1.6rem;
+    }
+
+    /* Mobil – brødtekststørrelse i sektioner */
+    #lucky-wheel p,
+    #halloween-book p,
+    #menu-card p,
+    #halloween-cafe p,
+    #costume-contest p,
+    #movie-nights p {
+        font-size: 1.1rem;
+        line-height: 1.4;
+    }
+
+    /* Mobil – billeder i midtersektioner skaleres til bredde */
+    #menu-card img,
+    #halloween-cafe img,
+    #costume-contest img,
+    #movie-nights img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Mobil – lykkehjul skaleres efter skærmbredde */
+    .wheel-container {
+        width: 80vw;
+        height: 80vw;
+        margin-top: 30px;
+    }
+
+    /* Mobil – samme fontstørrelse i lykkehjulet som på desktop */
+    .wheel-text {
+        font-size: 16px;
+    }
+
+    /* Mobil – bogens max højde begrænses */
+    .book-frame {
+        max-height: 70vh;
+    }
+
+    /* Mobil – lidt mindre pile til karrusellen */
+    .carousel-button {
+        width: 45px;
+        height: 45px;
+    }
+
+    /* Mobil - Spooky Movie Nights plakater: samme proportion som på PC, bare mindre */
+    .movieSwiper .swiper-slide {
+        width: 32vw;                 /* ca. 1/3 af bredden ligesom desktop */
+        height: calc(32vw * 1.5);    /* samme 280x420-agtige forhold (1:1,5) */
+    }
+
+    /* Mobil – lidt mindre overskrifter */
+    h1.display-3 {
+        font-size: 2.4rem;
+    }
+
+    .section-title {
+        font-size: 2.6rem;
+    }
+
+    /* Mobil – centreret tekst ved lykkehjulet */
+    #lucky-wheel .col-md-6:first-child {
+        text-align: center;
+    }
+
+    #lucky-wheel .col-md-6:first-child p {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
